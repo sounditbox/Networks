@@ -1,0 +1,203 @@
+Processor board ID JAD05190MTZ (4292891495)
+M860 processor: part number 0, mask 49
+4 FastEthernet/IEEE 802.3 interface(s)
+239K bytes of non-volatile configuration memory.
+62720K bytes of  ATA CompactFlash (Read/Write)
+Cisco IOS Software, 2800 Software (C2800NM-ADVIPSERVICESK9-M), Version 12.4(15)T1, RELEASE SOFTWARE (fc2)
+Technical Support: http://www.cisco.com/techsupport
+Copyright (c) 1986-2007 by Cisco Systems, Inc.
+Compiled Wed 18-Jul-07 06:21 by pt_rel_team
+
+
+         --- System Configuration Dialog ---
+
+Would you like to enter the initial configuration dialog? [yes/no]: n
+
+
+Press RETURN to get started!
+
+
+
+Router>en
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#int fa0/0
+Router(config-if)#ip add 192.168.10.2 255.255.255.252
+Router(config-if)#exit
+Router(config)#int fa0/1
+Router(config-if)#ip add 192.168.10.6 255.255.255.252
+Router(config-if)#exit
+Router(config)#int fa1/0
+Router(config-if)#ip add 192.168.2.1 255.255.255.0
+Router(config-if)#exit
+Router(config)#
+
+
+
+
+
+
+
+
+Router con0 is now available
+
+
+
+
+
+
+Press RETURN to get started.
+
+
+
+
+
+
+
+
+
+
+
+
+
+Router>en
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#int fa0/0
+Router(config-if)#no sh
+
+Router(config-if)#
+%LINK-5-CHANGED: Interface FastEthernet0/0, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/0, changed state to up
+exit
+Router(config)#int fa0/1
+Router(config-if)#no sh
+
+Router(config-if)#
+%LINK-5-CHANGED: Interface FastEthernet0/1, changed state to up
+exit
+Router(config)#int fa1/0
+Router(config-if)#no sh
+
+Router(config-if)#
+%LINK-5-CHANGED: Interface FastEthernet1/0, changed state to up
+exit
+Router(config)#exit
+Router#
+%SYS-5-CONFIG_I: Configured from console by console
+wr mem
+Building configuration...
+[OK]
+Router#
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet0/1, changed state to up
+
+Router#show ip
+Router#show ip
+% Incomplete command.
+Router#show ip ?
+  access-lists  List access lists
+  arp           IP ARP table
+  bgp           BGP information
+  cache         IP fast-switching route cache
+  cef           Cisco Express Forwarding
+  dhcp          Show items in the DHCP database
+  eigrp         IP-EIGRP show commands
+  inspect       CBAC (Context Based Access Control) information
+  interface     IP interface status and configuration
+  ips           IPS (Intrusion Prevention System) information
+  nat           IP NAT information
+  nbar          Network-Based Application Recognition
+  ospf          OSPF information
+  protocols     IP routing protocol process parameters and statistics
+  rip           IP RIP show commands
+  route         IP routing table
+  ssh           Information on SSH
+Router#show ip table
+               ^
+% Invalid input detected at '^' marker.
+	
+Router#
+%LINEPROTO-5-UPDOWN: Line protocol on Interface FastEthernet1/0, changed state to up
+
+
+
+
+
+
+
+
+
+Router con0 is now available
+
+
+
+
+
+
+Press RETURN to get started.
+
+
+
+
+
+
+
+
+
+
+
+
+
+Router>en
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#
+Router(config)#router rip
+Router(config-router)#version 2
+Router(config-router)#net 192.168.2.0
+Router(config-router)#net 192.168.10.0
+Router(config-router)#net 10.8.1.0
+Router(config-router)#show ip ro
+Router(config-router)#show ip ro
+                      ^
+% Invalid input detected at '^' marker.
+	
+Router(config-router)#exit
+Router(config)#exit
+Router#
+%SYS-5-CONFIG_I: Configured from console by console
+
+Router#show ip ro
+Router#show ip route 
+Codes: C - connected, S - static, I - IGRP, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP
+       i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area
+       * - candidate default, U - per-user static route, o - ODR
+       P - periodic downloaded static route
+
+Gateway of last resort is not set
+
+R    10.0.0.0/8 [120/1] via 192.168.10.1, 00:00:21, FastEthernet0/0
+                [120/1] via 192.168.10.5, 00:00:18, FastEthernet0/1
+R    192.168.1.0/24 [120/1] via 192.168.10.1, 00:00:21, FastEthernet0/0
+C    192.168.2.0/24 is directly connected, FastEthernet1/0
+R    192.168.3.0/24 [120/1] via 192.168.10.5, 00:00:18, FastEthernet0/1
+     192.168.10.0/24 is variably subnetted, 3 subnets, 2 masks
+R       192.168.10.0/24 is possibly down, routing via 192.168.10.1, FastEthernet0/0
+C       192.168.10.0/30 is directly connected, FastEthernet0/0
+C       192.168.10.4/30 is directly connected, FastEthernet0/1
+
+Router#show ip int br
+Interface              IP-Address      OK? Method Status                Protocol 
+FastEthernet0/0        192.168.10.2    YES manual up                    up 
+FastEthernet0/1        192.168.10.6    YES manual up                    up 
+FastEthernet1/0        192.168.2.1     YES manual up                    up 
+FastEthernet1/1        unassigned      YES unset  administratively down down 
+Vlan1                  unassigned      YES unset  administratively down down
+Router#wr mem
+Building configuration...
+[OK]
+Router#
