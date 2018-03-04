@@ -1,0 +1,10 @@
+R1AR1(config)#int se2/0
+R1AR1(config-if)#ip add 192.168.1.2 255.255.255.0
+R1AR1(config-if)#int se3/0
+R1AR1(config-if)#ip add 192.168.2.1 255.255.255.0
+
+R1AR1(config)#rou ospf 1
+R1AR1(config-router)#router-id 3.3.3.3
+R1AR1(config-router)#net 192.168.1.0 0.0.0.255 area 1
+R1AR1(config-router)#net 192.168.2.0 0.0.0.255 area 1
+R1AR1(config-router)#net 192.168.0.0 0.0.255.255 area 1

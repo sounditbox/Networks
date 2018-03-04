@@ -1,0 +1,21 @@
+R1AR0(config)#int fa0/0
+R1AR0(config-if)#ip add 10.2.2.1 255.255.255.0
+R1AR0(config-if)#int se2/0
+R1AR0(config-if)#ip add 10.1.1.1 255.255.255.0
+
+R1AR0(config)#rou ospf 1
+R1AR0(config-router)#router-id 1.1.1.1
+R1AR0(config-router)#network 10.1.1.0 0.0.0.255 area 0
+R1AR0(config-router)#network 10.2.2.0 0.0.0.255 area 0
+
+     10.0.0.0/8 is variably subnetted, 7 subnets, 2 masks
+C       10.1.1.0/24 is directly connected, Serial2/0
+C       10.2.2.0/24 is directly connected, FastEthernet0/0
+O E2    10.3.3.0/24 [110/20] via 10.2.2.2, 00:18:20, FastEthernet0/0
+O       10.32.0.1/32 [110/2] via 10.2.2.2, 00:18:20, FastEthernet0/0
+O       10.32.1.1/32 [110/2] via 10.2.2.2, 00:18:20, FastEthernet0/0
+O       10.32.2.1/32 [110/2] via 10.2.2.2, 00:18:20, FastEthernet0/0
+O       10.32.3.1/32 [110/2] via 10.2.2.2, 00:18:20, FastEthernet0/0
+O E2 172.20.0.0/16 [110/20] via 10.2.2.2, 00:18:20, FastEthernet0/0
+O IA 192.168.1.0/24 [110/128] via 10.1.1.2, 00:18:40, Serial2/0
+O IA 192.168.2.0/24 [110/192] via 10.1.1.2, 00:18:40, Serial2/0

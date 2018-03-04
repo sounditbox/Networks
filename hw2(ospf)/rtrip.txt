@@ -1,0 +1,13 @@
+Router(config)#int se2/0
+Router(config-if)#ip add 10.3.3.2 255.255.255.0
+Router(config)#int loop 0
+Router(config-if)#ip add 172.20.0.1 255.255.255.0
+Router(config)#int loop 1
+Router(config-if)#ip add 172.20.1.1 255.255.255.0
+Router(config)#int loop 2
+Router(config-if)#ip add 172.20.2.1 255.255.255.0
+
+Router(config)#rou rip
+Router(config-router)#ver 2
+Router(config-router)#net 10.0.0.0
+Router(config-router)#netw 172.20.0.0

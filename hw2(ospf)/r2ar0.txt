@@ -1,0 +1,24 @@
+R2AR0(config)#int fa0/0
+R2AR0(config-if)#ip add 10.2.2.2 255.255.255.0
+R2AR0(config-if)#int se2/0
+R2AR0(config-if)#ip add 10.3.3.1 255.255.255.0
+R2AR0(config-if)#int loop 0
+R2AR0(config-if)#ip add 10.24.0.1 255.255.255.255
+R2AR0(config-if)#int loop 1
+R2AR0(config-if)#ip add 10.24.1.1 255.255.255.255
+R2AR0(config-if)#int loop 2
+R2AR0(config-if)#ip add 10.24.2.1 255.255.255.255
+R2AR0(config-if)#int loop 3
+R2AR0(config-if)#ip add 10.24.3.1 255.255.255.255
+
+R2AR0(config)#rou ospf 1
+R2AR0(config-router)#router-id 2.2.2.2
+R2AR0(config-router)#net 10.2.2.0 255.255.255.0 area 0
+R2AR0(config-router)#net 10.32.0.0 0.0.255.255 area 0
+
+
+R2AR0(config)#rou rip
+R2AR0(config-router)#ver 2
+R2AR0(config-router)#net 10.0.0.0
+R2AR0(config)#rou ospf 1
+R2AR0(config-router)#redistr rip subnets
